@@ -15,6 +15,9 @@
     <div class="container">
         <div class="card shadow">
             <div class="card-body">
+                {% if message_error %}
+                <p class="">{{message_error}}</p>
+                {% endif %}
                 <form action="/add" method="POST">
                     <div class="row mb-3">
                         <div class="col">
