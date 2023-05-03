@@ -6,7 +6,7 @@ A simple project with Flask and Postgresql
 
 cd backend-test
 python3.9 -m venv venv
-source venn/bin/activate
+source venv/bin/activate
 pip install -r requirements.txt
 python app.py
 

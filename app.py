@@ -23,10 +23,15 @@ def add_users():
     if id_user and full_name and birth and email:
         data = (id_user, full_name, birth, email)
         data_to_insert = query.add_users(data)
+
         if not data_to_insert:
-            return redirect(url_for('index'))
+            return redirect(url_for('invalid'))
 
     return redirect(url_for('index'))
+
+@app.route('/invalid')
+def invalid():
+    return render_template('invalid.html', title='Backend-Test')
 
 
 if __name__ == '__main__':
