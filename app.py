@@ -23,9 +23,11 @@ def add_users():
     if id_user and full_name and birth and email:
         data = (id_user, full_name, birth, email)
         data_to_insert = query.add_users(data)
-        if data_to_insert:
+        print('here',data_to_insert)
+        if data_to_insert is not None:
+            return redirect(url_for('invalid'))
+        else:
             return redirect(url_for('index'))
-
     return redirect(url_for('index'))
 
 @app.route('/invalid')
