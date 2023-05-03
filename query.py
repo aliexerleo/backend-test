@@ -7,10 +7,14 @@ def list_all_users():
     sql = 'SELECT * FROM public.users'
 
     try:
-        cur = conn.cursor()
-        cur.execute(sql)
-        query = cur.fetchall()
-        return query
+        with conn.cursor() as cur:
+            cur.execute(sql)
+            column_names = tuple(str(column[0], "utf-8")
+                                    if isinstance(column[0], bytes) else column[0]
+                                    for column in cur.description)
+
+            for row in cur:
+                yield dict(zip(column_names, row))
     except Error as e:
         print(f'Error at list_all_users(): {str(e)}')
         return false
