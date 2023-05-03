@@ -1,8 +1,6 @@
 from flask import render_template, Flask, request, redirect, url_for
 from connection import create_connection
 import query
-import psycopg2
-
 
 
 app = Flask(__name__)
@@ -16,20 +14,16 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add_users():
-    print('here')
-    conn = create_connection()
     id_user = int(request.form['Id'])
     full_name = request.form['FullName']
     birth = request.form['Birth']
     email = request.form['Email']
 
     if id_user and full_name and birth and email:
-        conn = create_connection()
-        sql = "INSERT INTO public.users (id, Full_name, birth, email) VALUES (%s, %s, %s, %s)";
         data = (id_user, full_name, birth, email)
-        cur = conn.cursor()
-        cur.execute(sql, data)
-        conn.commit()
+        data_to_insert = query.add_users(data)
+        if not data_to_insert:
+            return redirect(url_for('index'))
 
     return redirect(url_for('index'))
 

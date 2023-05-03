@@ -4,11 +4,11 @@
 
 CREATE TABLE IF NOT EXISTS public.users
 (
-    "Id" integer NOT NULL,
-    "FullName" text COLLATE pg_catalog."default",
-    "Birth" timestamp without time zone,
-    "Email" text COLLATE pg_catalog."default",
-    CONSTRAINT users_pkey PRIMARY KEY ("Id")
+    id integer NOT NULL,
+    full_name text COLLATE pg_catalog."default",
+    birth timestamp without time zone,
+    email text COLLATE pg_catalog."default",
+    CONSTRAINT users_pkey PRIMARY KEY (id)
 )
 
 TABLESPACE pg_default;
