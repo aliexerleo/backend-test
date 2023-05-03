@@ -23,9 +23,8 @@ def add_users():
     if id_user and full_name and birth and email:
         data = (id_user, full_name, birth, email)
         data_to_insert = query.add_users(data)
-
-        if not data_to_insert:
-            return redirect(url_for('invalid'))
+        if data_to_insert:
+            return redirect(url_for('index'))
 
     return redirect(url_for('index'))
 
