@@ -7,9 +7,9 @@ def create_connection():
     try:
         conn = psycopg2.connect(
                 host='localhost',
-                database='new_school',
-                user='myschool',
-                password='School2020'
+                database='postgres',
+                user='postgres',
+                password='postgres'
         )
     except Error as e:
         print('Error at create_connection()' + str(e))
